@@ -1,0 +1,28 @@
+cabal-version:      3.4
+name:               includes-sub-libraries
+version:            0.1.0.0
+license:            BSD-2-Clause
+license-file:       LICENSE
+author:             Recursion Ninja
+maintainer:         github@recursion.ninja
+build-type:         Simple
+
+common warnings
+    ghc-options: -Wall
+
+library lib1
+    import:           warnings
+    exposed-modules:  Lib1
+    build-depends:    base ^>=4.20.0.0, includes-sub-libraries:lib2
+    hs-source-dirs:   lib1
+    default-language: GHC2021
+    visibility:       public
+
+
+library lib2
+    import:           warnings
+    exposed-modules:  Lib2
+    build-depends:    base ^>=4.20.0.0
+    hs-source-dirs:   lib2
+    default-language: GHC2021
+    visibility:       private
